@@ -1,0 +1,25 @@
+
+import { render, router } from "./src/lib";
+import AboutPage from "./src/pages/about";
+import ContactPage from "./src/pages/contact";
+import HomePage from "./src/pages/home";
+import PostDetailPage from "./src/pages/post-detail";
+import PostsPage from "./src/pages/posts";
+import ProjectDetailPage from "./src/pages/project-detail";
+import ProjectsPage from "./src/pages/projects";
+import adminProjectsPage from "./src/pages/admin/projects";
+import adminProjectsAdd from "./src/pages/admin/projects-add";
+import AdminProjectEditPage from "./src/pages/admin/projects-edit";
+const app = document.querySelector("#app");
+router.on("/", () => render(HomePage, app));
+router.on("/about", () => render(AboutPage, app));
+router.on("/contact", () => render(ContactPage, app));
+router.on("/post-detail", () => render(PostDetailPage, app));
+router.on("/posts", () => render(PostsPage, app));
+router.on("/project/:id", ({ data }) => render(() => ProjectDetailPage(data), app));
+router.on("/projects", () => render(ProjectsPage, app));
+router.on("/admin/projects", () => render(adminProjectsPage, app));
+router.on("/admin/projects/add", () => render(adminProjectsAdd, app));
+router.on("/admin/projects/:id/edit", ({ data }) => render(() => AdminProjectEditPage(data), app));
+router.notFound(() => console.log("not found page"));
+router.resolve();
