@@ -1,4 +1,5 @@
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.js";
 import { render, router } from "./src/lib";
 import AboutPage from "./src/pages/about";
 import ContactPage from "./src/pages/contact";
@@ -21,5 +22,5 @@ router.on("/projects", () => render(ProjectsPage, app));
 router.on("/admin/projects", () => render(adminProjectsPage, app));
 router.on("/admin/projects/add", () => render(adminProjectsAdd, app));
 router.on("/admin/projects/:id/edit", ({ data }) => render(() => AdminProjectEditPage(data), app));
-router.notFound(() => console.log("not found page"));
+router.notFound(() => render(NotFoundPage, app));
 router.resolve();
