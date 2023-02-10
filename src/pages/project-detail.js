@@ -7,7 +7,7 @@ const ProjectDetailPage = (id) => {
     // if (!currentProject) return "";
     const [project, setProject] = useState({});
     useEffect(() => {
-        fetch("http://localhost:5170/projects/" + id)
+        fetch("http://localhost:3000/projects/" + id)
             .then((response) => response.json())
             .then((data) => setProject(data));
     }, []);
